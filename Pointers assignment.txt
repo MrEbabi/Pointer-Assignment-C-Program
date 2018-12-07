@@ -1,0 +1,71 @@
+PROGRAM REQUIREMENTS:
+Your program will store multiple user account information to a file and encode passwords using the following rules:
+Password can only contain alpha numeric characters
+Password must be at least 8 characters
+Token is required to encode and decode a password
+Token must be an integer ranging from 1 and 9
+ 
+To complete this assignment, you will need to understand Strings, Structures, File I/O and Pointers.
+ 
+You can complete this assignment without using pointers, but pointers will be required to receive full credit, hence arrays are not allowed.
+ 
+PROGRAM OVERVIEW:
+Create a program which prompts the user to enter up to 10 user accounts with the following information using a structure named user_s:
+User Name
+Decoded Password
+Encoded Password
+Token
+ 
+Display an error if the user does not enter valid information per the program requirements listed above and allow then to re-enter this information.
+ 
+Encode the password using the token provided using an EncodePassword function and store this into the user_s structure for each user. 
+ 
+void EncodePassword(user_s* );
+ 
+Store the user information in a file.
+ 
+The output should look like below for one user:
+ 
+User Name                Decoded Password             Encoded Password             Token             
+Scastillo                     scastillo1234                         WGEWXMPPS1234            4
+ 
+
+ENCODING RULES:
+Make all alpha character’s capital
+Change each character to the character represented by the current asciicode plus the token value.
+ 
+For example:
+#include <ctype.h>   //New library for toupper and isalpha
+ 
+void main()
+{
+            char cTemp = 'c';   //lowercase alpha character
+            int iAsciiCode;
+            int iToken = 4;
+ 
+            if(isalpha(cTemp))
+    {
+                cTemp = toupper(cTemp);
+    }
+ 
+    iAsciiCode = (int) cTemp;  //get the asciicode of the character stored in cTemp
+ 
+    cTemp = iAsciiCode + iToken;  //replace the character, iToken characters away
+ 
+    printf("%c", cTemp);
+    
+    return 0;
+}
+ 
+Save your program as Password_Encoder_01.c
+ 
+Turn in Password_Encoder_01.c
+Password_Encoded_File.txt
+ 
+Reminder:
+To compile your program $ 
+gcc  -Wall PasswordEncoder_01.c  -o  PasswordEncoder_01
+ 
+To run your program $ 
+./PasswordEncoder_01
+
